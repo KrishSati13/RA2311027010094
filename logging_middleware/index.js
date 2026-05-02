@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const AUTH_URL = 'http://20.207.122.201/evaluation-service/auth';
-const LOG_URL = 'http://20.207.122.201/evaluation-service/logs';
+const isBrowser = typeof window !== 'undefined';
+const BASE_URL = isBrowser ? '' : 'http://20.207.122.201';
+const AUTH_URL = `${BASE_URL}/evaluation-service/auth`;
+const LOG_URL = `${BASE_URL}/evaluation-service/logs`;
 
 let cachedToken = null;
 let tokenExpiry = null;

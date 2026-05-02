@@ -2,7 +2,9 @@ import axios from 'axios';
 // @ts-ignore
 import { Log, getAuthToken } from 'logging_middleware';
 
-const NOTIFICATIONS_URL = 'http://20.207.122.201/evaluation-service/notifications';
+const isBrowser = typeof window !== 'undefined';
+const BASE_URL = isBrowser ? '' : 'http://20.207.122.201';
+const NOTIFICATIONS_URL = `${BASE_URL}/evaluation-service/notifications`;
 
 export const logger = async (level: string, pkg: string, message: string) => {
     // We swallow errors here so logging doesn't crash the UI
